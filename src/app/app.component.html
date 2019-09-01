@@ -1,21 +1,60 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="total-results">Total Results : 260</div>
+
+      <div class="user-card">
+        <div class="d-flex user-details">
+          <div class="user-avatar">
+            <img src="../assets/images/GitHub-Mark.png" alt="User Avatar" class="img-fluid">
+          </div>
+
+          <div class="d-flex flex-column flex-fill">
+            <div class="d-flex flex-column name-link-wrapper">
+              <div class="user-name">Chinmay Patil</div>
+              <div class="profile-link"><a href="https://github.com/chinmay-uideveloper" target="_blank">https://github.com/chinmay-uideveloper</a>
+              </div>
+            </div>
+            
+            <div class="card-footer">
+              <ul class="repositories-list">
+                <li class="list-item">Data One: Value One</li>
+                <li class="list-item">Data Two: Value Two</li>
+              </ul>
+
+              <button class="btn btn-outline-primary details-toggle-btn"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#multiCollapseExample2"
+                      aria-expanded="false"
+                      aria-controls="multiCollapseExample2">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <table class="table table-striped repositories-list-table mb-0">
+            <tbody>
+              <tr>
+                <td>Data Label</td>
+                <td>Data Value One</td>
+              </tr>
+              <tr>
+                <td>Data Label</td>
+                <td>Data Value Two</td>
+              </tr>
+              <tr>
+                <td>Data Label</td>
+                <td>Data Value Three</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
 <router-outlet></router-outlet>
