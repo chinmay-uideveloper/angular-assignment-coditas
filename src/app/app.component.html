@@ -1,60 +1,71 @@
-<app-header></app-header>
+<app-header (query)="updateSearchString($event)"></app-header>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="total-results">Total Results : 260</div>
+  <ng-container *ngIf="this.usersList">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="total-results">Total Results : {{ totalResults }}</div>
 
-      <div class="user-card">
-        <div class="d-flex user-details">
-          <div class="user-avatar">
-            <img src="../assets/images/GitHub-Mark.png" alt="User Avatar" class="img-fluid">
-          </div>
+        <div class="user-card" *ngFor="let user of this.usersList; let i = index">
+          <div class="d-flex user-details">
+            <div class="user-avatar">
+              <img [src]="user.avatar_url" alt="User Avatar" class="img-fluid" />
+            </div>
 
-          <div class="d-flex flex-column flex-fill">
-            <div class="d-flex flex-column name-link-wrapper">
-              <div class="user-name">Chinmay Patil</div>
-              <div class="profile-link"><a href="https://github.com/chinmay-uideveloper" target="_blank">https://github.com/chinmay-uideveloper</a>
+            <div class="d-flex flex-column flex-fill">
+              <div class="d-flex flex-column name-link-wrapper">
+                <div class="user-name">{{ user.login }}</div>
+                <div class="profile-link"><a [href]="user.html_url" target="_blank">{{ user.html_url }}</a>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <ul class="repositories-list">
+                  <li class="list-item">Data One: Value One</li>
+                  <li class="list-item">Data Two: Value Two</li>
+                </ul>
+
+                <button class="btn btn-outline-primary details-toggle-btn" type="button" data-toggle="collapse"
+                  [attr.data-target]="'#collapse' + i" aria-expanded="false"
+                  [attr.aria-controls]="'collapse' + i">Details</button>
               </div>
             </div>
-            
-            <div class="card-footer">
-              <ul class="repositories-list">
-                <li class="list-item">Data One: Value One</li>
-                <li class="list-item">Data Two: Value Two</li>
-              </ul>
-
-              <button class="btn btn-outline-primary details-toggle-btn"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#multiCollapseExample2"
-                      aria-expanded="false"
-                      aria-controls="multiCollapseExample2">Details</button>
-            </div>
           </div>
-        </div>
 
-        <div class="collapse multi-collapse" id="multiCollapseExample2">
-          <table class="table table-striped repositories-list-table mb-0">
-            <tbody>
-              <tr>
-                <td>Data Label</td>
-                <td>Data Value One</td>
-              </tr>
-              <tr>
-                <td>Data Label</td>
-                <td>Data Value Two</td>
-              </tr>
-              <tr>
-                <td>Data Label</td>
-                <td>Data Value Three</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="collapse multi-collapse" [id]="'collapse' + i">
+            <table class="table table-striped repositories-list-table mb-0">
+              <tbody>
+                <tr>
+                  <td>Data Label</td>
+                  <td>Data Value One</td>
+                </tr>
+                <tr>
+                  <td>Data Label</td>
+                  <td>Data Value Two</td>
+                </tr>
+                <tr>
+                  <td>Data Label</td>
+                  <td>Data Value Three</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <ul class="pagination inline mb-5 d-flex justify-content-end">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>...</li>
+          <li>{{ totalPages }}</li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
 </div>
 
 <router-outlet></router-outlet>
