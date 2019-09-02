@@ -8,7 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Output() query = new EventEmitter<string>();
+  @Output() sortOption = new EventEmitter<string>();
   searchString: string;
+  selectedSortOption = 'Name (A - Z)';
 
   constructor() { }
 
@@ -19,6 +21,11 @@ export class HeaderComponent implements OnInit {
     this.searchString = (event.target as HTMLInputElement).value;
     this.query.emit(this.searchString);
     console.log(this.searchString);
+  }
+
+  setSortOption(sortOption: string) {
+    this.selectedSortOption = sortOption;
+    this.sortOption.emit(this.selectedSortOption);
   }
 
 }

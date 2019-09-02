@@ -17,4 +17,8 @@ export class GithubUserService {
   getUserRepositories(username: string) {
     return this.http.get(this.url + '/users/' + username + '/repos');
   }
+
+  getUsersFullName(username: string) {
+    return this.http.get(this.url + '/users/' + username);
+  }
 }

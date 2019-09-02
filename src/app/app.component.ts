@@ -9,6 +9,7 @@ import { GithubUserService } from '../app/github-user.service';
 })
 export class AppComponent {
   @Input() searchString: string;
+  @Input() sortOption: string;
   usersList: any;
   totalResults = 0;
   currentPageNumber = 1;
@@ -24,10 +25,11 @@ export class AppComponent {
 
       this.usersList.forEach((item: any, index: number) => {
         this.getRepositoriesList(item.login, index);
+        this.getUsersFullName(item.login, index);
       });
 
-      console.log('Search Response');
-      console.log(this.usersList);
+      /* console.log('Search Response');
+      console.log(this.usersList); */
     });
   }
 
@@ -37,12 +39,28 @@ export class AppComponent {
     });
   }
 
+  getUsersFullName(username: string, index: number) {
+    this.githubUserService.getUsersFullName(username).subscribe((data: any) => {
+      this.usersList[index].fullname = data.name;
+    });
+  }
+
   updateSearchString(query: string) {
     this.searchString = query;
     if (query) {
       this.getUsersList(query, this.currentPageNumber);
-    } else {
-      console.log(query);
     }
+  }
+
+  updateSortOption(sortOption: string) {
+    this.sortOption = sortOption;
+    if (sortOption) {
+      this.getUsersList(sortOption, this.currentPageNumber);
+    }
+  }
+
+  loadPage(pageNumber: number) {
+    this.currentPageNumber = pageNumber;
+    this.getUsersList(this.searchString, this.currentPageNumber);
   }
 }

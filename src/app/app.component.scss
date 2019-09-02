@@ -100,5 +100,10 @@
     &:hover {
       color: #147abb;
     }
+
+    &.active {
+      color: #147abb;
+      font-weight: bold;
+    }
   }
 }

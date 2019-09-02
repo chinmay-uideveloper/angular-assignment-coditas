@@ -5,14 +5,14 @@
         <div class="dropdown sort-options-dropdown">
           <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <span class="selected-option">Selected Option</span>
+            <span class="selected-option">{{ selectedSortOption }}</span>
             <i class="material-icons">keyboard_arrow_down</i>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Name (A - Z)</a>
-            <a class="dropdown-item" href="#">Name (Z - A)</a>
-            <a class="dropdown-item" href="#">Rank Up</a>
-            <a class="dropdown-item" href="#">Rank Down</a>
+            <a class="dropdown-item" href="#" (click)="setSortOption('Name (A - Z)')">Name (A - Z)</a>
+            <a class="dropdown-item" href="#" (click)="setSortOption('Name (Z - A)')">Name (Z - A)</a>
+            <a class="dropdown-item" href="#" (click)="setSortOption('Rank Up')">Rank Up</a>
+            <a class="dropdown-item" href="#" (click)="setSortOption('Rank Down')">Rank Down</a>
           </div>
         </div>
 

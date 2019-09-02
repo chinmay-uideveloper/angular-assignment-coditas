@@ -1,4 +1,4 @@
-<app-header (query)="updateSearchString($event)"></app-header>
+<app-header (query)="updateSearchString($event)" (sortOption)="updateSortOption($event)"></app-header>
 
 <div class="container">
   <ng-container *ngIf="this.usersList">
@@ -14,7 +14,7 @@
 
             <div class="d-flex flex-column flex-fill">
               <div class="d-flex flex-column name-link-wrapper">
-                <div class="user-name">{{ user.login }}</div>
+                <div class="user-name">{{ user.fullname }}</div>
                 <div class="profile-link"><a [href]="user.html_url" target="_blank">{{ user.html_url }}</a>
                 </div>
               </div>
@@ -56,11 +56,11 @@
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <ul class="pagination inline mb-5 d-flex justify-content-end">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
+          <li (click)="loadPage(1)" [class.active]="currentPageNumber == 1">1</li>
+          <li (click)="loadPage(2)" [class.active]="currentPageNumber == 2">2</li>
+          <li (click)="loadPage(3)" [class.active]="currentPageNumber == 3">3</li>
           <li>...</li>
-          <li>{{ totalPages }}</li>
+          <li (click)="loadPage(totalPages)" [class.active]="currentPageNumber == totalPages">{{ totalPages }}</li>
         </ul>
       </div>
     </div>
