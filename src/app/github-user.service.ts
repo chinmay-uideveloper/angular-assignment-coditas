@@ -13,4 +13,8 @@ export class GithubUserService {
   getUserProfiles(query: string, pageNumber: number) {
     return this.http.get(this.url + '/search/users?q=' + query + '&page=' + pageNumber + '&per_page=3');
   }
+
+  getUserRepositories(username: string) {
+    return this.http.get(this.url + '/users/' + username + '/repos');
+  }
 }

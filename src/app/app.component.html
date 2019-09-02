@@ -21,8 +21,7 @@
 
               <div class="card-footer">
                 <ul class="repositories-list">
-                  <li class="list-item">Data One: Value One</li>
-                  <li class="list-item">Data Two: Value Two</li>
+                  <li class="list-item" *ngFor="let repository of user.repositories | slice:0:2">{{ repository.name }}: {{ repository.language }}</li>
                 </ul>
 
                 <button class="btn btn-outline-primary details-toggle-btn" type="button" data-toggle="collapse"
@@ -35,18 +34,18 @@
           <div class="collapse multi-collapse" [id]="'collapse' + i">
             <table class="table table-striped repositories-list-table mb-0">
               <tbody>
-                <tr>
-                  <td>Data Label</td>
-                  <td>Data Value One</td>
+                <tr *ngFor="let repository of user.repositories">
+                  <td>{{ repository.name }}</td>
+                  <td>{{ repository.language }}</td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>Data Label</td>
                   <td>Data Value Two</td>
                 </tr>
                 <tr>
                   <td>Data Label</td>
                   <td>Data Value Three</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>

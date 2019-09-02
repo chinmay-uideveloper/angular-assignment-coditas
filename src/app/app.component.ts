@@ -9,7 +9,7 @@ import { GithubUserService } from '../app/github-user.service';
 })
 export class AppComponent {
   @Input() searchString: string;
-  usersList: Array<JSON>;
+  usersList: any;
   totalResults = 0;
   currentPageNumber = 1;
   totalPages = 0;
@@ -21,8 +21,19 @@ export class AppComponent {
       this.totalResults = data.total_count;
       this.totalPages = Math.ceil(this.totalResults / 3);
       this.usersList = data.items;
+
+      this.usersList.forEach((item: any, index: number) => {
+        this.getRepositoriesList(item.login, index);
+      });
+
       console.log('Search Response');
       console.log(this.usersList);
+    });
+  }
+
+  getRepositoriesList(username: string, index: number) {
+    this.githubUserService.getUserRepositories(username).subscribe((data: any) => {
+      this.usersList[index].repositories = data;
     });
   }
 

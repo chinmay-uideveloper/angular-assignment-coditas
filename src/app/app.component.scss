@@ -20,6 +20,7 @@
     img {
       border-radius: 50%;
       height: 100px;
+      min-width: 100px;
       width: 100%;
     }
   }
@@ -62,6 +63,11 @@
       min-width: 135px;
     }
   }
+}
+
+.multi-collapse {
+  max-height: 193px;
+  overflow-y: auto;
 }
 
 .repositories-list-table {
